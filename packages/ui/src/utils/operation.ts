@@ -5,30 +5,62 @@ import {
   OperationVariables,
 } from '@custom/schema';
 import useSwr, { SWRResponse } from 'swr';
+import useSWRMutation, { SWRMutationResponse } from 'swr/mutation';
+
+function swrFetcher<TOperation extends AnyOperationId>(operationMetadata: {
+  operation: string;
+  variables?: OperationVariables<TOperation>;
+}) {
+  const executor = createExecutor(operationMetadata.operation as TOperation, {
+    variables: operationMetadata.variables,
+  });
+
+  if (executor instanceof Function) {
+    return executor();
+  }
+  // If the executor is not a function, then just return it. This means the
+  // executor is already the data we want.
+  return executor;
+}
+
+function swrMutator<TOperation extends AnyOperationId>(
+  operation: string,
+  args?: OperationVariables<TOperation>,
+) {
+  const executor = createExecutor(operation as TOperation, {
+    variables: args?.arg,
+  });
+  if (executor instanceof Function) {
+    return executor();
+  }
+  return executor;
+}
 
 export function useOperation<TOperation extends AnyOperationId>(
   operation: TOperation,
   variables?: OperationVariables<TOperation>,
-): Omit<SWRResponse<OperationResult<TOperation>>, 'mutate'> {
-  const executor = createExecutor(operation, variables);
-  // If the executor is a function, use SWR to manage it.
-  const result = useSwr<OperationResult<TOperation>>(
-    [operation, variables],
-    // If the executor is not a function, pass null to SWR,
-    // so it does not try to fetch.
-    typeof executor === 'function' ? executor : null,
+): SWRResponse<OperationResult<TOperation>> {
+  return useSwr<OperationResult<TOperation>>(
+    { operation, variables },
+    swrFetcher,
     {
       suspense: false,
     },
   );
+}
 
-  return typeof executor === 'function'
-    ? result
-    : // If the executor is not a function, return a mock SWR response.
-      {
-        data: executor,
-        error: undefined,
-        isValidating: false,
-        isLoading: false,
-      };
+export function useMutation<TOperation extends AnyOperationId>(
+  operation: TOperation,
+): SWRMutationResponse<
+  OperationResult<TOperation>,
+  string,
+  string,
+  OperationVariables<TOperation>
+> {
+  return useSWRMutation<
+    OperationResult<TOperation>,
+    string,
+    string,
+    OperationVariables<TOperation>
+  >(operation, swrMutator);
 }
