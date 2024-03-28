@@ -29,6 +29,7 @@
     "import-translations": "pnpm drush scr scripts/translations-import.php"
   },
   "dependencies": {
+    "@amazeelabs/gatsby-source-silverback": "^1.13.16",
     "@custom/custom": "workspace:*",
     "@custom/custom_heavy": "workspace:*",
     "@custom/gutenberg_blocks": "workspace:*",
