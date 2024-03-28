@@ -6,15 +6,7 @@
 // TS file name should be different from gastby-config.ts, otherwise Gatsby will
 // pick it up instead of the JS file.
 
-import { getPages, getTranslatables } from '@custom/decap';
-import autoload from '@custom/schema/gatsby-autoload';
-import { resolve } from 'path';
 import { existsSync } from 'fs';
-
-const dir = resolve('node_modules/@custom/decap/data');
-
-process.env.GATSBY_DRUPAL_URL =
-  process.env.DRUPAL_EXTERNAL_URL || 'http://127.0.0.1:8888';
 
 process.env.NETLIFY_URL = process.env.NETLIFY_URL || 'http://127.0.0.1:8000';
 
@@ -67,48 +59,19 @@ const plugins = [
       policy: [{ userAgent: '*', allow: '/', disallow: [] }],
     },
   },
+  {
+    resolve: '@amazeelabs/gatsby-source-silverback',
+    options: {
+      schema_configuration: './graphqlrc.yml',
+    },
+  },
+  '@custom/cms',
+  '@custom/decap',
 ];
 
 // Probe if Drupal is there and use it to source data.
 if (existsSync('./node_modules/@custom/cms/package.json')) {
-  plugins.push({
-    resolve: '@amazeelabs/gatsby-source-silverback',
-    options: {
-      schema_configuration: './graphqlrc.yml',
-      directives: autoload,
-      drupal_url: process.env.DRUPAL_INTERNAL_URL || 'http://127.0.0.1:8888',
-      drupal_external_url:
-        // File requests are proxied through netlify.
-        process.env.NETLIFY_URL || 'http://127.0.0.1:8000',
-      graphql_path: '/graphql',
-      auth_key: 'cfdb0555111c0f8924cecab028b53474',
-      type_prefix: '',
-    },
-  });
-}
-
-// Probe if Decap is there and use it for data sourcing and static assets.
-if (existsSync('./node_modules/@custom/decap/package.json')) {
-  plugins.push({
-    resolve: '@amazeelabs/gatsby-source-silverback',
-    options: {
-      schema_configuration: './graphqlrc.yml',
-      directives: autoload,
-      sources: {
-        getPages: getPages(`${dir}/page`),
-        getTranslatables: getTranslatables(dir),
-      },
-    },
-  });
-  plugins.push({
-    resolve: '@amazeelabs/gatsby-plugin-static-dirs',
-    options: {
-      directories: {
-        'node_modules/@custom/decap/dist': '/admin',
-        'node_modules/@custom/decap/media': '/media',
-      },
-    },
-  });
+  plugins.push();
 }
 
 /**

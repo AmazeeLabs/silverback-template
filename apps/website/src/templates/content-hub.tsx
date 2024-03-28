@@ -1,4 +1,4 @@
-import { ContentHub } from '@custom/ui/routes/ContentHub';
+mport { ContentHub } from '@custom/ui/routes/ContentHub';
 import React from 'react';
 
 export function Head() {
