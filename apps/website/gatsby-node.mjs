@@ -34,19 +34,6 @@ function isDefined(val) {
  * @type {import('gatsby').GatsbyNode['createPages']}
  */
 export const createPages = async ({ actions }) => {
-  // Rewrite file requests to Drupal.
-  actions.createRedirect({
-    fromPath: '/sites/default/files/*',
-    toPath: `${process.env.GATSBY_DRUPAL_URL}/sites/default/files/:splat`,
-    statusCode: 200,
-  });
-
-  actions.createRedirect({
-    fromPath: '/graphql',
-    toPath: `${process.env.GATSBY_DRUPAL_URL}/graphql`,
-    statusCode: 200,
-  });
-
   // Grab Home- and 404 pages.
   const homePages =
     (
@@ -73,13 +60,13 @@ export const createPages = async ({ actions }) => {
   });
 
   // Create a list of paths that we don't want to render regularly.
-  // 404 and homepages are dealt with differrently.
+  // 404 and homepages are dealt with differently.
   const skipPaths = [
     ...(homePages.map((page) => page.path) || []),
     ...(notFoundPages.map((page) => page.path) || []),
   ];
 
-  // Run the query that lists all pages, both decap and Drupal.
+  // Run the query that lists all pages, both Decap and Drupal.
   const pages = await graphqlQuery(ListPagesQuery);
 
   // Create a gatsby page for each of these pages.
