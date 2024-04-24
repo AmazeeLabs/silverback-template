@@ -53,6 +53,16 @@ test('Blocks', async () => {
           text
           openInNewTab
         }
+        ... on BlockImageWithText {
+          image {
+            __typename
+          }
+          imagePosition
+          textContent {
+            __typename
+            markup
+          }
+        }
       }
     }
     {
@@ -105,6 +115,29 @@ test('Blocks', async () => {
             {
               "__typename": "BlockForm",
               "url": "http://127.0.0.1:8000/en/form/contact",
+            },
+            {
+              "__typename": "BlockImageWithText",
+              "image": {
+                "__typename": "MediaImage",
+              },
+              "imagePosition": "right",
+              "textContent": {
+                "__typename": "BlockMarkup",
+                "markup": "
+    <p>All kinds of allowed blocks</p>
+
+    <ul><li>bla</li></ul>
+
+    <h2 class="wp-block-custom-heading">Heading</h2>
+
+    <figure class="wp-block-table"><table><tbody><tr><td>1</td><td>2</td></tr><tr><td>3</td><td>4</td></tr></tbody></table><figcaption>Caption</figcaption></figure>
+
+    <blockquote class="wp-block-quote"><p>Quote</p><cite>Citation</cite></blockquote>
+
+    <p></p>
+    ",
+              },
             },
             {
               "__typename": "BlockMarkup",
@@ -208,6 +241,17 @@ test('Blocks', async () => {
               "openInNewTab": null,
               "text": null,
               "url": null,
+            },
+            {
+              "__typename": "BlockImageWithText",
+              "image": null,
+              "imagePosition": "left",
+              "textContent": {
+                "__typename": "BlockMarkup",
+                "markup": "
+    <p></p>
+    ",
+              },
             },
           ],
           "hero": {
