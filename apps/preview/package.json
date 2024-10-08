@@ -14,6 +14,7 @@
   "dependencies": {
     "@custom/schema": "workspace:*",
     "@custom/ui": "workspace:*",
+    "@custom/cms": "workspace:*",
     "cookie-parser": "^1.4.6",
     "express": "^4.19.2",
     "express-basic-auth": "^1.2.1",

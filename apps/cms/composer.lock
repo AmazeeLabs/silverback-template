@@ -107,20 +107,20 @@
         },
         {
             "name": "amazeelabs/graphql_directives",
-            "version": "2.5.1",
+            "version": "2.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/AmazeeLabs/graphql_directives.git",
-                "reference": "876df172a30a07b8e1fe84a88fe976fc4d035a1c"
+                "reference": "f5e09e31726ad020e73498cc3d5350870168f3a1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AmazeeLabs/graphql_directives/zipball/876df172a30a07b8e1fe84a88fe976fc4d035a1c",
-                "reference": "876df172a30a07b8e1fe84a88fe976fc4d035a1c",
+                "url": "https://api.github.com/repos/AmazeeLabs/graphql_directives/zipball/f5e09e31726ad020e73498cc3d5350870168f3a1",
+                "reference": "f5e09e31726ad020e73498cc3d5350870168f3a1",
                 "shasum": ""
             },
             "require": {
-                "webmozart/glob": "^4.6.0"
+                "webmozart/glob": "^4.7.0"
             },
             "type": "drupal-module",
             "extra": {
@@ -138,9 +138,9 @@
             "homepage": "https://silverback.netlify.app",
             "support": {
                 "issues": "https://github.com/AmazeeLabs/graphql_directives/issues",
-                "source": "https://github.com/AmazeeLabs/graphql_directives/tree/2.5.1"
+                "source": "https://github.com/AmazeeLabs/graphql_directives/tree/2.6.0"
             },
-            "time": "2024-04-08T11:43:10+00:00"
+            "time": "2024-07-25T12:54:57+00:00"
         },
         {
             "name": "amazeelabs/silverback-cli",
@@ -882,7 +882,8 @@
             ],
             "support": {
                 "email": "info@cloudinary.com",
-                "issues": "https://github.com/cloudinary/cloudinary_php/issues"
+                "issues": "https://github.com/cloudinary/cloudinary_php/issues",
+                "source": "https://github.com/cloudinary/cloudinary_php/tree/2.12.0"
             },
             "time": "2023-12-03T13:57:09+00:00"
         },
@@ -941,7 +942,8 @@
             ],
             "support": {
                 "email": "info@cloudinary.com",
-                "issues": "https://github.com/cloudinary/php-transformation-builder-sdk/issues"
+                "issues": "https://github.com/cloudinary/php-transformation-builder-sdk/issues",
+                "source": "https://github.com/cloudinary/php-transformation-builder-sdk/tree/1.4.0"
             },
             "time": "2024-01-07T13:57:38+00:00"
         },
@@ -3237,6 +3239,10 @@
                     "email": "nacho@isholgueras.com"
                 },
                 {
+                    "name": "Lullabot",
+                    "homepage": "https://www.drupal.org/user/3815489"
+                },
+                {
                     "name": "mrfelton",
                     "homepage": "https://www.drupal.org/user/305669"
                 }
@@ -3504,6 +3510,10 @@
                     "homepage": "https://www.drupal.org/u/szeidler"
                 },
                 {
+                    "name": "marcofernandes",
+                    "homepage": "https://www.drupal.org/user/2127558"
+                },
+                {
                     "name": "perandre",
                     "homepage": "https://www.drupal.org/user/221337"
                 },
@@ -3701,12 +3711,8 @@
                     "role": "Maintainer"
                 },
                 {
-                    "name": "fjgarlin",
-                    "homepage": "https://www.drupal.org/user/2495842"
-                },
-                {
-                    "name": "tim.clifford",
-                    "homepage": "https://www.drupal.org/user/3460013"
+                    "name": "rocketeerbkw",
+                    "homepage": "https://www.drupal.org/user/615672"
                 },
                 {
                     "name": "tobybellwood",
@@ -4051,7 +4057,7 @@
             "extra": {
                 "drupal": {
                     "version": "8.x-1.12",
-                    "datestamp": "1696776683",
+                    "datestamp": "1712319355",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -10544,16 +10550,16 @@
         },
         {
             "name": "webmozart/glob",
-            "version": "4.6.0",
+            "version": "4.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/webmozarts/glob.git",
-                "reference": "3c17f7dec3d9d0e87b575026011f2e75a56ed655"
+                "reference": "8a2842112d6916e61e0e15e316465b611f3abc17"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webmozarts/glob/zipball/3c17f7dec3d9d0e87b575026011f2e75a56ed655",
-                "reference": "3c17f7dec3d9d0e87b575026011f2e75a56ed655",
+                "url": "https://api.github.com/repos/webmozarts/glob/zipball/8a2842112d6916e61e0e15e316465b611f3abc17",
+                "reference": "8a2842112d6916e61e0e15e316465b611f3abc17",
                 "shasum": ""
             },
             "require": {
@@ -10587,9 +10593,9 @@
             "description": "A PHP implementation of Ant's glob.",
             "support": {
                 "issues": "https://github.com/webmozarts/glob/issues",
-                "source": "https://github.com/webmozarts/glob/tree/4.6.0"
+                "source": "https://github.com/webmozarts/glob/tree/4.7.0"
             },
-            "time": "2022-05-24T19:45:58+00:00"
+            "time": "2024-03-07T20:33:40+00:00"
         },
         {
             "name": "webonyx/graphql-php",
@@ -12255,8 +12261,8 @@
                 "schema"
             ],
             "support": {
-                "issues": "https://github.com/justinrainbow/json-schema/issues",
-                "source": "https://github.com/justinrainbow/json-schema/tree/v5.2.13"
+                "issues": "https://github.com/jsonrainbow/json-schema/issues",
+                "source": "https://github.com/jsonrainbow/json-schema/tree/v5.2.13"
             },
             "time": "2023-09-26T02:20:38+00:00"
         },

@@ -5,11 +5,11 @@
   directory = "netlify/functions"
 
 [build]
-  publish = "public"
+  publish = "dist/public"
   edge_functions = "netlify/edge-functions"
 
 [functions.strangler]
-  included_files = ["public/404.html"]
+  included_files = ["dist/public/404.html"]
 
 [[edge_functions]]
   path = "/"

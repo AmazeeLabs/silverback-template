@@ -2,6 +2,6 @@
 .netlify
 .cache
 .turbo
-public
+dist
 styles.css
 persisted-store
