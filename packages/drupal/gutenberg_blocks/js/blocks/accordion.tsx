@@ -1,6 +1,7 @@
 import { InnerBlocks, InspectorControls } from 'wordpress__block-editor';
 import { registerBlockType } from 'wordpress__blocks';
 import { PanelBody, SelectControl } from 'wordpress__components';
+import { dispatch, useSelect } from 'wordpress__data';
 
 const { t: __ } = Drupal;
 
@@ -24,7 +25,21 @@ registerBlockType<{
     },
   },
   edit: (props) => {
-    const { setAttributes } = props;
+    const { attributes, setAttributes } = props;
+    const headingLevel = attributes.headingLevel;
+
+    /* eslint-disable-next-line */
+    const { children } = useSelect((select) => ({
+      children: select('core/block-editor').getBlocksByClientId(props.clientId),
+    }));
+
+    if (children[0].innerBlocks) {
+      children[0].innerBlocks.forEach((child: any) => {
+        dispatch('core/editor').updateBlockAttributes(child.clientId, {
+          headingLevel: headingLevel,
+        });
+      });
+    }
 
     return (
       <>
@@ -53,6 +68,7 @@ registerBlockType<{
               onChange={(headingLevel: string) => {
                 setAttributes({ headingLevel });
               }}
+              help={__('The heading level will be applied to all nested accordion items.')}
             />
           </PanelBody>
         </InspectorControls>
