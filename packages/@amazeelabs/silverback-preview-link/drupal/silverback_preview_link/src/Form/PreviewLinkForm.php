@@ -128,6 +128,12 @@ final class PreviewLinkForm extends ContentEntityForm {
       $externalPreviewLink = \Drupal::service('silverback_external_preview.external_preview_link');
       $externalPreviewUrl = $externalPreviewLink->createPreviewUrlFromEntity($host);
       $query = $externalPreviewUrl->getOption('query') ?? [];
+      // Drop the revision id from shareable links. Pinning to the rid that
+      // was current when the link was generated would stop recipients from
+      // seeing later edits until a new link is issued. With no explicit rid,
+      // @fetchEntity(loadLatestRevision: true) resolves the active revision on
+      // every request instead.
+      unset($query['rid']);
       $query['preview_access_token'] = $silverbackPreviewLink->getToken();
       $externalPreviewUrl->setOption('query', $query);
       $externalPreviewUrlString = $externalPreviewUrl->setAbsolute()->toString();
