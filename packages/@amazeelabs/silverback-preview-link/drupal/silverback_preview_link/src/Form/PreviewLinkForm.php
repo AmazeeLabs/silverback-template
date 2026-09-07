@@ -111,7 +111,7 @@ final class PreviewLinkForm extends ContentEntityForm {
   /**
    * {@inheritdoc}
    */
-  public function buildForm(array $form, FormStateInterface $form_state, RouteMatchInterface $routeMatch = NULL) {
+  public function buildForm(array $form, FormStateInterface $form_state, ?RouteMatchInterface $routeMatch = NULL) {
     if (!isset($routeMatch)) {
       throw new \LogicException('Route match not populated from argument resolver');
     }
