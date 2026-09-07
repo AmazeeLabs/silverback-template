@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.1.2](https://github.com/amazeeio-solutions/silverback-template/compare/@amazeelabs/silverback-template@3.1.1...@amazeelabs/silverback-template@3.1.2) (2026-09-07)
+
+
+### Bug Fixes
+
+* enforce preview link expiry when validating tokens ([c2ff5f5](https://github.com/amazeeio-solutions/silverback-template/commit/c2ff5f53e97d6e92a0823d25ad1d8d8e63dc9210))
+
+
+
+
+
 ## [3.1.1](https://github.com/amazeeio-solutions/silverback-template/compare/@amazeelabs/silverback-template@3.1.0...@amazeelabs/silverback-template@3.1.1) (2026-09-03)
 
 
